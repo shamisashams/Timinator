@@ -40,24 +40,26 @@ const Home = () => {
           <p> Get started</p>
         </Link>
       </section>
-      <section className="flex justify-center items-stretch gap-12 p-10">
+      <section className="flex justify-center items-stretch lg:gap-12 gap-5 lg:p-10 flex-wrap lg:flex-nowrap">
         {boxes.map((item, index) => {
           return (
-            <div
-              key={index}
-              className="text-center w-92 p-8 border rounded-xl bg-white">
-              <img className="m-auto" src={item.icon} alt="" />
-              <p className="mt-2 mb-3">
-                <strong>{item.title}</strong>
-              </p>
-              <div>{item.text}</div>
+            <div className="bg-gradient rounded-xl overflow-hidden w-92 border-2 border-transparent">
+              <div
+                key={index}
+                className="text-center  lg:p-8 p-5 bg-white h-full w-full">
+                <img className="m-auto" src={item.icon} alt="" />
+                <p className="mt-2 mb-3">
+                  <strong>{item.title}</strong>
+                </p>
+                <div>{item.text}</div>
+              </div>
             </div>
           );
         })}
       </section>
       <section className="pb-20 pt-10">
         <h3 className="text-center">How It Works</h3>
-        <div className="flex items-start justify-center gap-10 mt-10">
+        <div className="flex items-start justify-center sm:gap-10 gap-5 mt-10">
           {steps.map((text, index) => {
             return (
               <div key={index} className="text-center">
