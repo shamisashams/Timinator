@@ -14,6 +14,9 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+.bg-pink {
+  background: #ffe2eb;
+}
 .bg-gradient {
   background: linear-gradient(to right, #ffe2eb, #ccf1ff);
 }

@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import Clock from "../assets/icons/clock.svg";
 import Note from "../assets/icons/note.svg";
 import List from "../assets/icons/checklist.svg";
+import Header from "../components/Header";
 
 const Home = () => {
   const boxes = [
@@ -26,6 +27,7 @@ const Home = () => {
 
   return (
     <div>
+      <Header />
       <section className="max-w-3xl mx-auto text-center py-20">
         <h1 className="text-gradient">Plan smarter, not harder</h1>
         <p className="mt-5 mb-10">
