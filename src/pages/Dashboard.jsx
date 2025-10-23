@@ -7,7 +7,7 @@ import Logo from "../assets/logo.svg";
 import { Link } from "react-router-dom";
 
 const Dashboard = () => {
-  const [active, setActive] = useState(0);
+  const [active, setActive] = useState(1);
   const tabs = [
     "👤 Profile",
     "📚 Add course",
