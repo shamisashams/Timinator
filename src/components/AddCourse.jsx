@@ -2,9 +2,9 @@ import React from "react";
 
 const AddCourse = ({ active }) => {
   return (
-    <div className={`${active ? "block" : "hidden"}`}>
-      <div className="bg-gradient border-3 border-transparent max-w-3xl rounded-2xl">
-        <div className="bg-white p-5 pb-10 rounded-2xl lg:min-w-2xl">
+    <div className={`${active ? "block" : "hidden"} w-full`}>
+      <div className="bg-gradient border-3 border-transparent max-w-3xl rounded-2xl  mx-auto">
+        <div className="bg-white p-5 pb-10 rounded-2xl ">
           <div className="text-center mb-10">
             <h2>Add New Course</h2>
             <div className="opacity-50">
