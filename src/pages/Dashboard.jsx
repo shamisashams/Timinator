@@ -15,9 +15,9 @@ const Dashboard = () => {
     "📃 Task List",
   ];
   return (
-    <div className="pl-80 min-h-screen">
-      <div className="fixed top-0 left-0 h-screen bg-pink py-5 px-10">
-        <Link className="mb-16 block" to="/">
+    <div className="xl:pl-80 md:pl-72 min-h-screen">
+      <div className="md:fixed md:top-0 md:left-0 md:h-screen bg-pink py-5 xl:px-10 px-6 text-center md:text-left">
+        <Link className="md:mb-16 mb-10 block" to="/">
           <img src={Logo} alt="" />
         </Link>
         {tabs.map((item, index) => {
@@ -25,7 +25,7 @@ const Dashboard = () => {
             <button
               onClick={() => setActive(index)}
               key={index}
-              className={`block cursor-pointer py-4 px-10 w-full text-left mb-1 rounded-md hover:bg-white/[0.3] transition ${
+              className={`md:block cursor-pointer md:py-4 md:px-10 p-2 md:w-full text-left mb-1 rounded-md hover:bg-white/[0.3] transition ${
                 active == index ? "!bg-white" : ""
               }`}>
               {item}
@@ -33,7 +33,7 @@ const Dashboard = () => {
           );
         })}
       </div>
-      <section className="flex items-start justify-center pt-20">
+      <section className="flex items-start justify-center md:py-20 py-8">
         <Profile active={active == 0} />
         <AddCourse active={active == 1} />
         <TaskManagement active={active == 2} />
