@@ -1,6 +1,6 @@
 import React from "react";
 
-const EditProfile = ({ activeSet,onComplete }) => {
+const EditProfile = ({ activeSet, onComplete }) => {
   return (
     <div className={`${activeSet ? "block" : "hidden"} w-full`}>
       <div className="bg-gradient border-3 border-transparent max-w-3xl rounded-2xl  mx-auto">
@@ -14,30 +14,30 @@ const EditProfile = ({ activeSet,onComplete }) => {
               Choose Photo
             </button>
           </div>
-          
+
           {/* Form Fields */}
           <form className="space-y-5">
             <div className="grid grid-cols-2 gap-4">
-            <div className="flex flex-col">
-              <label className="text-sm font-medium text-gray-700 mb-1">
-                First Name
-              </label>
-              <input
-                type="text"
-                placeholder="e.g. Computer Science, Biology, Psychology"
-                className="border rounded-lg p-2 focus:ring-2 focus:ring-blue-200"
-              />
-            </div>
-            <div className="flex flex-col">
-              <label className="text-sm font-medium text-gray-700 mb-1">
-                Last Name
-              </label>
-              <input
-                type="text"
-                placeholder="e.g. Computer Science, Biology, Psychology"
-                className="border rounded-lg p-2 focus:ring-2 focus:ring-blue-200"
-              />
-            </div>
+              <div className="flex flex-col">
+                <label className="text-sm font-medium text-gray-700 mb-1">
+                  First Name
+                </label>
+                <input
+                  type="text"
+                  placeholder="e.g. Computer Science, Biology, Psychology"
+                  className="rounded-lg p-2 focus:ring-2 focus:ring-blue-200"
+                />
+              </div>
+              <div className="flex flex-col">
+                <label className="text-sm font-medium text-gray-700 mb-1">
+                  Last Name
+                </label>
+                <input
+                  type="text"
+                  placeholder="e.g. Computer Science, Biology, Psychology"
+                  className="rounded-lg p-2 focus:ring-2 focus:ring-blue-200"
+                />
+              </div>
               <div className="flex flex-col">
                 <label className="text-sm font-medium text-gray-700 mb-1">
                   Age
@@ -45,7 +45,7 @@ const EditProfile = ({ activeSet,onComplete }) => {
                 <input
                   type="number"
                   placeholder="Enter your age"
-                  className="border rounded-lg p-2 focus:ring-2 focus:ring-blue-200"
+                  className="rounded-lg p-2 focus:ring-2 focus:ring-blue-200"
                 />
               </div>
 
@@ -53,7 +53,7 @@ const EditProfile = ({ activeSet,onComplete }) => {
                 <label className="text-sm font-medium text-gray-700 mb-1">
                   Year of Study
                 </label>
-                <select className="border rounded-lg p-2 focus:ring-2 focus:ring-blue-200">
+                <select className="rounded-lg p-2 focus:ring-2 focus:ring-blue-200">
                   <option>Select year</option>
                   <option>1st Year</option>
                   <option>2nd Year</option>
@@ -70,7 +70,7 @@ const EditProfile = ({ activeSet,onComplete }) => {
               <input
                 type="text"
                 placeholder="Enter your university name"
-                className="border rounded-lg p-2 focus:ring-2 focus:ring-blue-200"
+                className="rounded-lg p-2 focus:ring-2 focus:ring-blue-200"
               />
             </div>
 
@@ -81,7 +81,7 @@ const EditProfile = ({ activeSet,onComplete }) => {
               <input
                 type="text"
                 placeholder="e.g. Computer Science, Biology, Psychology"
-                className="border rounded-lg p-2 focus:ring-2 focus:ring-blue-200"
+                className="rounded-lg p-2 focus:ring-2 focus:ring-blue-200"
               />
             </div>
 
@@ -89,7 +89,7 @@ const EditProfile = ({ activeSet,onComplete }) => {
               <label className="text-sm font-medium text-gray-700 mb-1">
                 Current Semester
               </label>
-              <select className="border rounded-lg p-2 focus:ring-2 focus:ring-blue-200">
+              <select className="rounded-lg p-2 focus:ring-2 focus:ring-blue-200">
                 <option>Select semester</option>
                 <option>1st Semester</option>
                 <option>2nd Semester</option>
@@ -101,15 +101,15 @@ const EditProfile = ({ activeSet,onComplete }) => {
             </div>
 
             {/* Study Preferences */}
-            <h2 className="text-lg font-semibold text-gray-800 mt-6">
+            <h3 className="text-lg font-semibold text-gray-800 mt-6">
               Study Preferences
-            </h2>
+            </h3>
 
             <div className="flex flex-col">
               <label className="text-sm font-medium text-gray-700 mb-1">
                 Primary Study Goals
               </label>
-              <select className="border rounded-lg p-2 focus:ring-2 focus:ring-blue-200">
+              <select className="rounded-lg p-2 focus:ring-2 focus:ring-blue-200">
                 <option>Select your main goal</option>
                 <option>Exam Preparation</option>
                 <option>Skill Improvement</option>
@@ -122,7 +122,7 @@ const EditProfile = ({ activeSet,onComplete }) => {
               <label className="text-sm font-medium text-gray-700 mb-1">
                 Preferred Study Time
               </label>
-              <select className="border rounded-lg p-2 focus:ring-2 focus:ring-blue-200">
+              <select className="rounded-lg p-2 focus:ring-2 focus:ring-blue-200">
                 <option>Select preferred time</option>
                 <option>Morning</option>
                 <option>Afternoon</option>
@@ -135,8 +135,7 @@ const EditProfile = ({ activeSet,onComplete }) => {
             <button
               type="button"
               onClick={onComplete}
-              className="mt-6 w-full py-2 rounded-lg bg-gradient-to-r from-pink-300 to-blue-300 text-gray-800 font-medium shadow-md hover:opacity-90 transition"
-            >
+              className="mt-6 w-full py-2 rounded-lg bg-gradient font-bold">
               Complete Profile Setup
             </button>
           </form>
