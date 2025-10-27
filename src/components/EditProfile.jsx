@@ -1,6 +1,20 @@
 import React from "react";
+import { useEffect, useState } from "react";
 
-const EditProfile = ({ activeSet, onComplete }) => {
+const EditProfile= ({activeSet, onComplete, initialData})=> {
+  const [formData, setFormData]=useState(initialData)
+
+  useEffect(()=>{
+    setFormData(initialData)
+  },[initialData])
+
+  function handelChange(e){
+    const {name,value}= e.target 
+    setFormData(prev =>({
+      ...prev,
+      [name]: value
+    }) )
+  }
   return (
     <div className={`${activeSet ? "block" : "hidden"} w-full`}>
       <div className="bg-gradient border-3 border-transparent max-w-3xl rounded-2xl  mx-auto">
@@ -24,7 +38,10 @@ const EditProfile = ({ activeSet, onComplete }) => {
                 </label>
                 <input
                   type="text"
-                  placeholder="e.g. Computer Science, Biology, Psychology"
+                  placeholder="saji"
+                  name="firstName"
+                  value={formData.firstName}
+                  onChange={handelChange}
                   className="rounded-lg p-2 focus:ring-2 focus:ring-blue-200"
                 />
               </div>
@@ -34,32 +51,39 @@ const EditProfile = ({ activeSet, onComplete }) => {
                 </label>
                 <input
                   type="text"
-                  placeholder="e.g. Computer Science, Biology, Psychology"
+                  placeholder="jon"
+                  name="lirstName"
+                  value={formData.lastName}
+                  onChange={handelChange}
                   className="rounded-lg p-2 focus:ring-2 focus:ring-blue-200"
                 />
               </div>
               <div className="flex flex-col">
                 <label className="text-sm font-medium text-gray-700 mb-1">
-                  Age
+                  age
                 </label>
                 <input
                   type="number"
                   placeholder="Enter your age"
+                  name="age"
+                  value={formData.age}
+                  onChange={handelChange}
                   className="rounded-lg p-2 focus:ring-2 focus:ring-blue-200"
                 />
               </div>
 
               <div className="flex flex-col">
                 <label className="text-sm font-medium text-gray-700 mb-1">
-                  Year of Study
+                  Degree
                 </label>
-                <select className="rounded-lg p-2 focus:ring-2 focus:ring-blue-200">
-                  <option>Select year</option>
-                  <option>1st Year</option>
-                  <option>2nd Year</option>
-                  <option>3rd Year</option>
-                  <option>4th Year</option>
-                </select>
+                <input
+                  type="text"
+                  placeholder="Enter your degree"
+                  name="degree"
+                  value={formData.degree}
+                  onChange={handelChange}
+                  className="rounded-lg p-2 focus:ring-2 focus:ring-blue-200"
+                />
               </div>
             </div>
 
@@ -70,6 +94,9 @@ const EditProfile = ({ activeSet, onComplete }) => {
               <input
                 type="text"
                 placeholder="Enter your university name"
+                name="university"
+                value={formData.university}
+                onChange={handelChange}
                 className="rounded-lg p-2 focus:ring-2 focus:ring-blue-200"
               />
             </div>
@@ -81,6 +108,9 @@ const EditProfile = ({ activeSet, onComplete }) => {
               <input
                 type="text"
                 placeholder="e.g. Computer Science, Biology, Psychology"
+                name="fieldOfStudy"
+                value={formData.fieldOfStudy}
+                onChange={handelChange}
                 className="rounded-lg p-2 focus:ring-2 focus:ring-blue-200"
               />
             </div>
@@ -109,31 +139,33 @@ const EditProfile = ({ activeSet, onComplete }) => {
               <label className="text-sm font-medium text-gray-700 mb-1">
                 Primary Study Goals
               </label>
-              <select className="rounded-lg p-2 focus:ring-2 focus:ring-blue-200">
-                <option>Select your main goal</option>
-                <option>Exam Preparation</option>
-                <option>Skill Improvement</option>
-                <option>Research</option>
-                <option>Assignment Work</option>
-              </select>
+              <input
+                type="text"
+                placeholder="e.g. Exam prepration"
+                name="primaryStudyGoals"
+                value={formData.primaryStudyGoals}
+                onChange={handelChange}
+                className="rounded-lg p-2 focus:ring-2 focus:ring-blue-200"
+              />
             </div>
 
             <div className="flex flex-col">
               <label className="text-sm font-medium text-gray-700 mb-1">
                 Preferred Study Time
               </label>
-              <select className="rounded-lg p-2 focus:ring-2 focus:ring-blue-200">
-                <option>Select preferred time</option>
-                <option>Morning</option>
-                <option>Afternoon</option>
-                <option>Evening</option>
-                <option>Night</option>
-              </select>
+              <input
+                type="text"
+                placeholder="e.g. Afternoon, Night"
+                name="preferredStudyTime"
+                value={formData.preferredStudyTime}
+                onChange={handelChange}
+                className="rounded-lg p-2 focus:ring-2 focus:ring-blue-200"
+              />
             </div>
 
             {/* Submit Button */}
             <button
-              type="button"
+              type="submit"
               onClick={onComplete}
               className="mt-6 w-full py-2 rounded-lg bg-gradient font-bold">
               Complete Profile Setup

@@ -1,9 +1,45 @@
 import React from "react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import EditProfile from "../components/EditProfile";
 
 const Profile = ({ active }) => {
   const [isEditing, setIsEditing] = useState(false);
+  const [profileData, setProfileData] = useState(
+    {
+      firstName : "",
+      lastName:"",
+      age: null,
+      degree: "",
+      university: "",
+      fieldOfStudy: "",
+      currentSemester: "",
+      primaryStudyGoals:"",
+      preferredStudyTime:"",
+    }
+  )
+  useEffect(()=>{fetchProfileData()},[])
+
+  const fetchProfileData = async () => {
+    try { 
+      // 1. Send the GET request
+      const response = await fetch('/api/user/profile');
+  
+      // Basic error check for HTTP status codes (e.g., 404, 500)
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+  
+      // 2. Convert the response body from JSON string to a JavaScript object
+      const data = await response.json();
+  
+      // 3. Update the state with the received data
+      setProfileData(data);
+      } catch (error) {
+      console.error("Could not fetch profile data:", error);
+      // You might also set an 'error' state here to display a message to the user
+     }
+  };
+
   return (
     <div className={`${active ? "block" : "hidden"} w-full`}>
       {!isEditing ? (
@@ -21,12 +57,30 @@ const Profile = ({ active }) => {
             </p>
             <hr className="mb-4" />
             <div className="grid grid-cols-2 gap-3 mb-4">
-              <ProfileField label="Full Name" value="..." />
-              <ProfileField label="Age" value="..." />
-              <ProfileField label="University" value="..." />
-              <ProfileField label="Field of study" value="..." />
-              <ProfileField label="Degree" value="..." />
-              <ProfileField label="Current Semester" value="..." />
+               <div className="bg-gray-50 p-3 rounded-lg shadow-sm">
+                <p className="text-xs text-gray-500">Full Name</p>
+                 <p className="font-medium text-gray-800">{profileData.firstName} {profileData.lastName}</p>
+              </div>
+              <div className="bg-gray-50 p-3 rounded-lg shadow-sm">
+                <p className="text-xs text-gray-500">Age</p>
+                 <p className="font-medium text-gray-800">{profileData.age}</p>
+              </div>
+              <div className="bg-gray-50 p-3 rounded-lg shadow-sm">
+                <p className="text-xs text-gray-500">University</p>
+                 <p className="font-medium text-gray-800">{profileData.university}</p>
+              </div>
+              <div className="bg-gray-50 p-3 rounded-lg shadow-sm">
+                <p className="text-xs text-gray-500">Field of study</p>
+                 <p className="font-medium text-gray-800">{profileData.fieldOfStudy}</p>
+              </div>
+              <div className="bg-gray-50 p-3 rounded-lg shadow-sm">
+                <p className="text-xs text-gray-500">Degree</p>
+                 <p className="font-medium text-gray-800">{profileData.degree}</p>
+              </div>
+              <div className="bg-gray-50 p-3 rounded-lg shadow-sm">
+                <p className="text-xs text-gray-500">Current Semester</p>
+                 <p className="font-medium text-gray-800">{profileData.currentSemester}</p>
+              </div>
             </div>
             <p className="ml-6 font-semibold text-gray-700 mb-2">
               Study Preferences
@@ -34,8 +88,12 @@ const Profile = ({ active }) => {
             <hr className="mb-4" />
 
             <div className="bg-gray-50 p-3 rounded-lg text-gray-700">
-              I enjoy studying artificial intelligence and full-stack
-              development.
+            <p className="ml-6 font-normal text-gray-600 mb-2">
+               Primary Study Goals: {profileData.primaryStudyGoals}
+            </p>
+            <p className="ml-6 font-normal text-gray-600 mb-2">
+              Preferred Study Time: {profileData.preferredStudyTime}
+            </p>
             </div>
 
             {/* Edit Button */}
@@ -52,18 +110,12 @@ const Profile = ({ active }) => {
         <EditProfile
           activeSet={isEditing}
           onComplete={() => setIsEditing(false)}
+          initialData = {profileData}
         />
       )}
     </div>
   );
 };
 
-function ProfileField({ label, value }) {
-  return (
-    <div className="bg-gray-50 p-3 rounded-lg shadow-sm">
-      <p className="text-xs text-gray-500">{label}</p>
-      <p className="font-medium text-gray-800">{value}</p>
-    </div>
-  );
-}
+
 export default Profile;
