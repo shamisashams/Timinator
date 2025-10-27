@@ -37,7 +37,7 @@ const Home = () => {
           personalized task recommendations built around your learning habits.
         </p>
         <Link
-          to="/"
+          to="/login"
           className="bg-gradient rounded-full py-3 px-12 font-bold block w-fit mx-auto ">
           <p> Get started</p>
         </Link>
