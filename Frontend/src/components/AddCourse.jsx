@@ -26,6 +26,19 @@ const AddCourse = ({ active }) => {
           <button className="bg-blue p-5 w-full font-bold mt-6">
             Add Course
           </button>
+          <div className="grid lg:grid-cols-3 sm:grid-cols-2 mt-10 gap-4">
+            {/* course box */}
+            <div className="bg-green-50 p-4">
+              <p>
+                <b>Course Name</b>
+              </p>
+              <div>Project</div>
+              <div>Deadline: 10.12.2026</div>
+              <button className="block bg-red-300 p-2 font-bold text-xs mx-auto mr-0 mt-4 cursor-pointer">
+                Delete course
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
