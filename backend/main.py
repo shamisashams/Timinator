@@ -3,7 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.orm import Session
 
 from database import get_db, SessionLocal, engine
-from models import Profile, Task, Base
+from backend.database import Profile, Task, Base
 from schemas import TaskCreate, TaskUpdate, TaskOut, ProfileBase, ProfileOut
 
 
