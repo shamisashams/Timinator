@@ -1,6 +1,7 @@
+
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from backend.database import Base# Import Base from models.py
+from models import Base# Import Base from models.py
 
 # --- 1. Database Configuration ---
 # We use a simple SQLite database file for this example.

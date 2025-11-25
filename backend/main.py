@@ -3,7 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.orm import Session
 
 from database import get_db, SessionLocal, engine
-from backend.database import Profile, Task, Base
+from models import Profile, Task, Base
 from schemas import TaskCreate, TaskUpdate, TaskOut, ProfileBase, ProfileOut
 
 
@@ -144,4 +144,4 @@ def delete_task(task_id: int, db: Session = Depends(get_db)):
     return {"detail": "Task deleted successfully"}
 
 # Create tables
-Base.metadata.create_all(bind=engine)
+Base.metadata.create_all(bind=engine) 
