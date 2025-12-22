@@ -43,3 +43,6 @@ def get_db():
     finally:
         # This code block always runs when the request is done.
         db.close()
+        
+# Create tables
+Base.metadata.create_all(bind=engine) 

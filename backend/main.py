@@ -2,7 +2,7 @@ from fastapi import FastAPI, Depends, HTTPException, status
 from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.orm import Session
 
-from database import get_db, SessionLocal, engine
+from database import get_db, engine
 from models import Profile, Task, Base
 from schemas import TaskCreate, TaskUpdate, TaskOut, ProfileBase, ProfileOut
 
@@ -115,7 +115,7 @@ def list_tasks(db: Session = Depends(get_db)):
 # 2 create a new task
 @app.post("/api/tasks", response_model=TaskOut)
 def create_task(task: TaskCreate, db: Session = Depends(get_db)):
-    new_task = Task(**task.model_dump())  
+    new_task = Task(**task.model_dump())
     db.add(new_task)
     db.commit()
     db.refresh(new_task)
@@ -142,6 +142,3 @@ def delete_task(task_id: int, db: Session = Depends(get_db)):
     db.delete(task)
     db.commit()
     return {"detail": "Task deleted successfully"}
-
-# Create tables
-Base.metadata.create_all(bind=engine) 

@@ -50,35 +50,32 @@ class ProfileOut(ProfileBase):
     """Schema for returning profile data to the client, including the primary key."""
     id: str  # The unique user ID, which is essential for the client to know
     
-    # We inherit all fields from ProfileBase, ensuring consistency.
-
+# We inherit all fields from ProfileBase, ensuring consistency.
 #4. Task Schemas
 
-
 class TaskBase(BaseModel):
-    title: str
-    description: Optional[str] = None
-    due_date: Optional[datetime] = None
-    related_project: Optional[str] = None
-    is_completed: Optional[bool] = False
-
-
-class TaskCreate(BaseModel):
     topic: str
-    description: str
-    deadline: str 
-    course: str
+    description: Optional[str] = None
+    deadline: Optional[str] = None
+    course: Optional[str] = None
 
-class TaskUpdate(TaskBase):
-    pass  # PUT or PATCH can use the same fields as TaskBase
+
+class TaskCreate(TaskBase):
+    pass
+
+
+class TaskUpdate(BaseModel):
+    topic: Optional[str] = None
+    description: Optional[str] = None
+    deadline: Optional[str] = None
+    course: Optional[str] = None
+
 
 class TaskOut(TaskBase):
     id: int
-    user_id: Optional[str]
+
     created_at: datetime
     updated_at: datetime
 
-    model_config = {
-        "from_attributes": True
-    }
-
+    class Config:
+        from_attributes = True
