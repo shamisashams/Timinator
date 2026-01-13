@@ -55,7 +55,7 @@ class Task(Base):
     created_at = Column(DateTime, default=datetime.utcnow)
     updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
 
-class Corse(Base):
+class Course(Base):
     __tablename__ ="courses"
 
     id = Column(Integer, primary_key = True, index=True) 
