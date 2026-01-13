@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, Boolean, DateTime, ForeignKey
+from sqlalchemy import Column, Integer, String, DateTime
 from sqlalchemy.ext.declarative import declarative_base
 from datetime import datetime
 
@@ -54,3 +54,19 @@ class Task(Base):
 
     created_at = Column(DateTime, default=datetime.utcnow)
     updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+
+class Corse(Base):
+    __tablename__ ="courses"
+
+    id = Column(Integer, primary_key = True, index=True) 
+    course_name = Column(String, nullable=False)   #Course Topic
+    project_name = Column(String, nullable=False)  #project
+    deadline = Column(String, nullable=True)       #keep as simple string
+
+    created_at = Column(DateTime, default=datetime.utcnow)
+    updated_at = Column(
+        DateTime, default=datetime.utcnow, onupdate=datetime.utcnow
+    )
+    
+    def __repr__(self):
+        return f"<Course(id='{self.id}', course_name='{self.course_name}')>"
