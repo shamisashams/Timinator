@@ -79,3 +79,24 @@ class TaskOut(TaskBase):
 
     class Config:
         from_attributes = True
+
+class CourseBase(BaseModel):
+    course_name: str
+    project_name: str
+    deadline: Optional[str] = None
+
+class CourseCreate(CourseBase):
+    pass    
+
+class CourseUpdate(BaseModel):
+    course_name: Optional[str] = None
+    project_name: Optional[str] = None
+    deadline: Optional[str] = None
+
+class CourseOut(CourseBase):
+    id: int
+    created_at: datetime
+    updated_at: datetime
+
+    class Config:
+        from_attributes = True    
