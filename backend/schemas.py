@@ -1,6 +1,34 @@
 from typing import Optional
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, EmailStr
 from datetime import datetime
+
+# --- Auth Schemas ---
+class UserRegister(BaseModel):
+    """Schema for user registration"""
+    email: EmailStr
+    username: str = Field(min_length=3, max_length=50)
+    password: str = Field(min_length=6)
+
+class UserLogin(BaseModel):
+    """Schema for user login"""
+    username: str
+    password: str
+
+class UserOut(BaseModel):
+    """Schema for user response (without password)"""
+    id: int
+    email: str
+    username: str
+    created_at: datetime
+    
+    class Config:
+        from_attributes = True
+
+class Token(BaseModel):
+    """Schema for JWT token response"""
+    access_token: str
+    token_type: str
+    user: UserOut
 
 # --- 1. ProfileBase Schema (Data for Updates) ---
 
@@ -99,4 +127,4 @@ class CourseOut(CourseBase):
     updated_at: datetime
 
     class Config:
-        from_attributes = True    
+        from_attributes = True
