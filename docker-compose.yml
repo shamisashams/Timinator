@@ -1,0 +1,36 @@
+
+version: "3.8"
+
+services:
+  api:
+    build:
+      context: ./Back-End
+      dockerfile: docker
+    container_name: fastapi_backend
+    
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./data:/app/data
+    networks:
+      - app_network
+
+    restart: unless-stopped
+
+  web:
+    build:
+      context: ./frontend
+      dockerfile: docker
+    container_name: react_frontend
+    ports:
+      - "5000:5173"
+    depends_on:
+      - api
+    networks:
+      - app_network
+    environment:  
+      - CHOKIDAR_USEPOLLING=true
+
+networks:
+  app_network:
+    driver: bridge

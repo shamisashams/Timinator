@@ -1,0 +1,94 @@
+@import "tailwindcss";
+
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  padding: 0 20px;
+  color: #000;
+  background-color: #fcfaf7;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.bg-pink {
+  background: #ffe2eb;
+}
+.bg-green {
+  background:#C5FFE8 ;
+}
+.bg-blue {
+  background: #ccf1ff;
+}
+.bg-gradient {
+  background: linear-gradient(to right, #ffe2eb, #ccf1ff);
+}
+.text-gradient {
+  background: linear-gradient(to right, #c26be0, #634ce5);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+h1,
+h2,
+h3 {
+  font-weight: bold;
+}
+h1 {
+  font-size: 60px;
+}
+h2 {
+  font-size: 40px;
+}
+h3 {
+  font-size: 30px;
+}
+p {
+  font-size: 20px;
+}
+input,
+select,
+textarea {
+  background: #f1f1f1;
+  display: block;
+  width: 100%;
+  height: 60px;
+  padding: 0 10px;
+  border-radius: 5px;
+  outline: none;
+  margin-top: 10px;
+  margin-bottom: 15px;
+}
+textarea {
+  height: 140px;
+}
+@media screen and (max-width: 1000px) {
+  p {
+    font-size: 16px;
+  }
+  h1 {
+    font-size: 40px;
+  }
+  h2 {
+    font-size: 30px;
+  }
+  h3 {
+    font-size: 20px;
+  }
+}
+@media screen and (max-width: 700px) {
+  p {
+    font-size: 15px;
+  }
+  h1 {
+    font-size: 30px;
+  }
+  h2 {
+    font-size: 25px;
+  }
+  h3 {
+    font-size: 18px;
+  }
+}
