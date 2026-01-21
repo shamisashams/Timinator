@@ -3,7 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.orm import Session
 from datetime import timedelta
 
-from database import get_db, engine
+from database import get_db, engine, init_db
 from models import Profile, Task, Course, Base, User
 from schemas import (
     TaskCreate, TaskUpdate, TaskOut,
@@ -22,6 +22,9 @@ from auth import (
 
 # FastAPI Application Initialization
 app = FastAPI(title="Timinator Profile API")
+
+# Initialize database tables
+init_db()
 
 # CORS Configuration
 origins = [
