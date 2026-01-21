@@ -1,6 +1,7 @@
 
 from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
+from sqlalchemy.orm import sessionmaker, Session
+from typing import Generator
 from models import Base# Import Base from models.py
 
 # --- 1. Database Configuration ---
@@ -22,6 +23,12 @@ engine = create_engine(
 # until we explicitly tell it to.
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
+# --- 4. Database Initialization ---
+# This command tells SQLAlchemy to create all tables defined in Base (our Profile model)
+# in the database file if they don't already exist.
+Base.metadata.create_all(bind=engine)
+
+
 # --- 5. Dependency Function for FastAPI (The most important part) ---
 
 def get_db():
@@ -37,12 +44,3 @@ def get_db():
     finally:
         # This code block always runs when the request is done.
         db.close()
-
-
-# --- 4. Database Initialization ---
-# This command tells SQLAlchemy to create all tables defined in Base (our Profile model)
-# in the database file if they don't already exist.
-# This is called AFTER all models are imported to ensure all tables are created.
-def init_db():
-    """Initialize database tables"""
-    Base.metadata.create_all(bind=engine) 
